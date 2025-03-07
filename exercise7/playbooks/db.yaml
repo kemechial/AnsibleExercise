@@ -21,7 +21,7 @@
         enabled: yes
 
     - name: Create a new database with name 'accounts'
-      mysql_db:
+      community.mysql.mysql_db: #mysql_db:
         name: 'accounts'
         state: present
         login_unix_socket: /var/lib/mysql/mysql.sock
