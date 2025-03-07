@@ -26,4 +26,11 @@
         state: present
         login_unix_socket: /var/lib/mysql/mysql.sock
 
+    - name: Create database user with name 'bob' and password '12345' with all database privileges
+      community.mysql.mysql_user:
+        name: vprofile
+        password: admin123
+        priv: '*.*:ALL'
+        state: present
+        login_unix_socket: /var/lib/mysql/mysql.sock
 
