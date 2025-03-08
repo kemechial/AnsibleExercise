@@ -1,0 +1,22 @@
+---
+- name: understanding vars precedence
+  hosts: all
+  become: yes
+  vars:
+    #USRNM: playuser
+    #COMM:  variable from playbook  # if not commented these take precedence
+  tasks:
+    - name: 
+      ansible.builtin.user:
+        name: "{{ USRNM }}"
+        comment: "{{ COMM }}"
+      register: usrout
+    - debug:
+        var: usrout
+    - debug:
+        var: usrout.comment
+    - debug:
+        var: usrout.name
+
+  #overwrite other definitions
+  # $  ansible-playbook -e USRNM=cliuser -e COMM=cliuser vars* -v
