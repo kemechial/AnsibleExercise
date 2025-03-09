@@ -1,0 +1,15 @@
+---
+- name: Provisioning servers
+  hosts: all
+  become: yes
+  roles:
+   - role: geerlingguy.java
+   - role: post-install
+     vars:
+        ntp0: 0.tr.pool.ntp.org #these variables have higher priority over vars/main.yml 
+        ntp1: 1.tr.pool.ntp.org
+        ntp2: 2.tr.pool.ntp.org
+        ntp3: 3.tr.pool.ntp.org
+
+# $ ansible-galaxy role install geerlingguy.java
+#install a role from community page and use it 
